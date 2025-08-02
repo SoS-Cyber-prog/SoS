@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOS Metall- & Schrottankauf</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* Body Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif; /* Changed font to Poppins */
+      color: #1f3b4d;
+      background: #f8f9fa;
+      line-height: 1.6; /* Improved readability */
+    }
+
+    /* Container for consistent width */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header Styles */
+    header {
+      background: #1f3b4d;
+      padding: 1rem 0;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Added subtle shadow */
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Allow wrapping on small screens */
+    }
+
+    .logo {
+      font-size: 1.8rem; /* Slightly larger logo */
+      font-weight: 700; /* Bolder font weight */
+      color: #ff6b00; /* Highlighted logo color */
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem; /* Increased spacing */
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff6b00; /* Hover effect for navigation links */
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(31, 59, 77, 0.7), rgba(31, 59, 77, 0.7)), url('https://source.unsplash.com/1600x600/?scrap,metal,recycling') center/cover no-repeat; /* Added overlay for text readability */
+      color: white;
+      padding: 8rem 1rem; /* More vertical padding */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 500px; /* Minimum height for hero section */
+    }
+
+    .hero h2 {
+      font-size: 3rem; /* Larger hero heading */
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: #ff6b00;
+      color: white;
+      padding: 0.85rem 2rem; /* Slightly larger padding */
+      margin-top: 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s ease, transform 0.2s ease; /* Added transform for subtle animation */
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3); /* Button shadow */
+    }
+
+    .btn:hover {
+      background: #e55d00;
+      transform: translateY(-2px); /* Lift effect on hover */
+    }
+
+    /* Services Section (Leistungen) */
+    .leistungen {
+      background: white;
+      padding: 5rem 1rem; /* More padding */
+      text-align: center;
+    }
+
+    .leistungen h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #1f3b4d;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem; /* Increased gap between cards */
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .card { 
+      background: #f1f1f1; /* uf function is return we just retunr a function*/
+      padding: 2.5rem; /* More padding in cards */
+      border-radius: 10px; /* Slightly more rounded corners */
+      width: 280px; /* Increased card width */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Stronger shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px); /* Lift effect on hover */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      color: #ff6b00;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Section (Kontakt) */
+    .kontakt {
+      background: #1f3b4d;
+      color: white;
+      padding: 5rem 1rem; /* More padding */
+      text-align: center;
+    }
+
+    .kontakt h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .kontakt p {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem; /* Adjusted margin for contact details */
+    }
+
+    .kontakt a {
+      color: #ff6b00; /* Highlighted links */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .kontakt a:hover {
+      color: #e55d00;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #0e202e;
+      color: white;
+      padding: 1.5rem; /* More padding */
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        margin: 0 0.8rem; /* Adjust spacing for mobile nav */
+        display: inline-block;
+      }
+
+      .hero {
+        padding: 6rem 1rem;
+        min-height: 400px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+      }
+
+      .leistungen h2, .kontakt h2 {
+        font-size: 2rem;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%; /* Adjust card width for better mobile fit */
+        max-width: 350px; /* Ensure cards don't get too wide */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      nav a {
+        margin: 0 0.5rem;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+      }
+
+      .leistungen h2, .kontakt h2 {
+        font-size: 1.8rem; /* Smaller heading for smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <h1 class="logo">SOS Metall & Schrott</h1>
+      <nav>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" data-aos="fade-up">
+    <div class="container">
+      <h2>Kostenlose Schrottabholung</h2>
+      <p>Schnell. Zuverlässig. Umweltgerecht.</p>
+      <a href="#kontakt" class="btn">Jetzt Termin vereinbaren</a>
+    </div>
+  </section>
+
+  <section id="leistungen" class="leistungen">
+    <div class="container">
+      <h2 data-aos="fade-up">Unsere Leistungen</h2>
+      <div class="cards">
+        <div class="card" data-aos="fade-up">
+          <h3>Altmetall</h3>
+          <p>Wir holen sämtliches Altmetall kostenlos und umweltgerecht ab. Kupfer, Aluminium, Eisen – wir nehmen es alles!</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <h3>Elektroschrott</h3>
+          <p>Alte Elektrogeräte wie Waschmaschinen, Kühlschränke oder Computer entsorgen wir fachgerecht und sicher.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Fahrzeugteile</h3>
+          <p>Von Motorblöcken bis zu Karosserieteilen – wir kümmern uns um die Abholung und Verwertung Ihrer Fahrzeugschrottteile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="kontakt" data-aos="fade-up">
+    <div class="container">
+      <h2>Kontaktieren Sie uns!</h2>
+      <p>Wir sind für Sie da – schnell, zuverlässig und unkompliziert.</p>
+
+      <p>
+        📞 Mobil: <a href="tel:+4915732992222">+49 1573 2992222</a><br>
+        📱 WhatsApp: <a href="https://wa.me/491783606066" target="_blank">+49 178 3606066</a><br>
+        📧 E-Mail: <a href="mailto:SOSHerne@gmail.com">SOSHerne@gmail.com</a>
+      </p>
+
+      <p>
+        📍 Adresse: Mozartstr. 13, 44649 Herne<br>
+        👤 Inhaber: Nabil Al Lahib
+      </p>
+
+      <a href="tel:+4915732992222" class="btn">Jetzt anrufen!</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 SOS Metall & Schrottankauf – <a href="#" style="color: white; text-decoration: none;">Impressum</a> – <a href="#" style="color: white; text-decoration: none;">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 1000, // Animation duration
+        once: true,     // Whether animation should happen only once - default
+      });
+    });
+  </script>
+</body>
+</html>
