@@ -3,39 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SOS Metall & Schrott</title>
+  <title>SOS Metall & Schrott - Startseite</title>
   <style>
+    /* Gleiche Styles wie zuvor, Header und Hero optimiert */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
       background-color: #000;
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-
     .header {
       width: 100%;
       background-color: #111;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       box-shadow: 0 2px 10px rgba(255, 165, 0, 0.2);
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 100;
       animation: slideDown 1s ease-out forwards;
     }
-
-    .title {
+    .title-block {
       color: orange;
-      font-size: 1.8rem;
       font-weight: bold;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-buttons a {
+      color: orange;
+      border: 1px solid orange;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .nav-buttons a:hover,
+    .nav-buttons a.active {
+      background-color: orange;
+      color: black;
     }
 
     .hero {
@@ -46,11 +65,11 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      padding-top: 120px;
+      padding-top: 120px; /* Platz für festen Header */
       position: relative;
       overflow: hidden;
+      flex-grow: 1;
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -62,197 +81,103 @@
       animation: pulse 6s infinite ease-in-out;
       z-index: 0;
     }
-
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 0.4; }
       50% { transform: scale(1.2); opacity: 0.6; }
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 700px;
     }
-
-    .cta-button {
-      background-color: orange;
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #ff9900;
-      transform: scale(1.05);
-    }
-
-    .form-section {
-      max-width: 500px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: #111;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
-      display: none;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    .form-section h2 {
-      color: yellow;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #ccc;
-    }
-
-    select,
-    input,
-    textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1.5rem;
-      border: none;
-      border-radius: 6px;
-      background-color: #222;
-      color: white;
-      font-size: 1rem;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .submit-btn {
-      background-color: orange;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s ease;
-    }
-
-    .submit-btn:hover {
-      background-color: #ff9900;
-    }
-
-    .leistungen {
-      padding: 4rem 2rem;
-      background-color: #000;
-      text-align: center;
-    }
-
-    .leistungen h2 {
-      font-size: 2.5rem;
-      color: yellow;
-      margin-bottom: 2rem;
-    }
-
-    .leistung-boxes {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .leistung-box {
-      background-color: #111;
-      border-left: 4px solid orange;
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: left;
-      box-shadow: 0 0 12px rgba(255,165,0,0.15);
-    }
-
-    .leistung-box h3 {
-      margin-bottom: 0.5rem;
+    .hero-content h1 {
+      font-size: 2.8rem;
       color: orange;
-    }
-
-    .leistung-box p {
-      color: #ddd;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .kontakt {
-      background-color: #111;
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: 3rem;
-    }
-
-    .kontakt h2 {
-      font-size: 2rem;
-      color: yellow;
       margin-bottom: 1rem;
     }
-
-    .kontakt p, .kontakt a {
+    .hero-content p {
+      font-size: 1.2rem;
       color: #ccc;
-      font-size: 1.1rem;
-      line-height: 2;
-      display: block;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    .icons-row {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .icon-item {
+      text-align: center;
+      color: #ddd;
+    }
+    .icon-item div {
+      font-size: 2.5rem;
     }
 
-    .kontakt a {
+    /* Neuer Abschnitt Mehr Infos */
+    .more-info-section {
+      background-color: #111;
+      color: #ddd;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+      text-align: center;
+    }
+    .more-info-section h2 {
       color: orange;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    .more-info-section p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .image-gallery img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      border: 4px solid orange;
+      border-radius: 10px;
+      background-color: black;
+      box-shadow: 0 0 12px rgba(255, 165, 0, 0.7);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 180, 0, 1);
+    }
+
+    /* Button unten */
+    .more-info-button {
+      background-color: orange;
+      color: black;
+      padding: 1rem 3rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       text-decoration: none;
+      display: inline-block;
     }
-
-    .kontakt a:hover {
-      text-decoration: underline;
-    }
-    .header {
-  width: 100%;
-  background-color: #111;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 10px rgba(255, 165, 0, 0.2);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  animation: slideDown 1s ease-out forwards;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-buttons button {
-  background-color: transparent;
-  border: 1px solid orange;
-  color: orange;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.nav-buttons button:hover {
-  background-color: orange;
-  color: black;
-}
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .more-info-button:hover {
+      background-color: #ff9900;
     }
 
     @keyframes slideDown {
@@ -260,118 +185,94 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    @media (min-width: 768px) {
-      .leistung-boxes {
-        flex-direction: row;
-        justify-content: center;
+    @media (max-width: 900px) {
+      .image-gallery {
+        flex-direction: column;
+        align-items: center;
       }
-      .leistung-box {
-        width: 45%;
+      .image-gallery img {
+        width: 90vw;
+        max-width: 400px;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .icons-row {
+        gap: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  
-<div class="header">
-  <div class="title-block">
-    <span class="title-icon">🛠️</span>
-    <span class="title-text">SOS Metall & Schrott</span>
-  </div>
-  <div class="nav-buttons">
-    <button onclick="scrollToSection('.leistungen')">Leistungen</button>
-    <button onclick="scrollToSection('.kontakt')">Kontaktieren</button>
-    <button onclick="scrollToSection('#formSection')">Termin machen</button>
-  </div>
-</div>
+  <header class="header">
+    <div class="title-block">
+      <span class="title-icon">🛠️</span>
+      SOS Metall & Schrott
+    </div>
+    <nav class="nav-buttons">
+      <a href="index.html" class="active">Startseite</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="termin.html">Termin</a>
+    </nav>
+  </header>
 
+  <main class="hero">
+    <div class="hero-content">
+      <h1>Schrottentsorgung – einfach, schnell und zuverlässig</h1>
+      <p>Wir holen Altmetall, Elektroschrott und Fahrzeugteile kostenlos und fachgerecht bei Ihnen ab. Umweltfreundlich, unkompliziert und direkt vor Ort.</p>
 
-  <div class="hero">
-  <div class="hero-content">
-    <h1 style="font-size: 2.5rem; color: orange; margin-bottom: 1rem;">Schrott loswerden war nie einfacher</h1>
-    <p style="font-size: 1.1rem; color: #ccc; max-width: 600px; margin-bottom: 2rem;">
-      Wir holen Altmetall, Elektroschrott und Fahrzeugteile kostenlos direkt bei Ihnen ab – zuverlässig, schnell und umweltfreundlich.
+      <div class="icons-row">
+        <div class="icon-item">
+          <div>🔧</div> 
+          <div>Altmetall</div>
+        </div>
+        <div class="icon-item">
+          <div>♻️</div>
+          <div>Elektroschrott</div>
+        </div>
+        <div class="icon-item">
+          <div>🚗</div>
+          <div>Fahrzeugteile</div>
+        </div>
+         <div class="icon-item">
+          <div>✅</div>
+          <div>Alles Weitere</div>
+        </div>
+      </div>
+
+      <!-- Button removed here -->
+
+    </div>
+  </main>
+
+  <!-- Neuer Abschnitt: Mehr Infos zum Schrott --> 
+  <section class="more-info-section">
+    <h2>Mehr Infos zum Schrott & Ablauf</h2>
+    <p>
+      Bei SOS Metall & Schrott kümmern wir uns um die umweltgerechte Entsorgung und das Recycling von Altmetall, Elektroschrott und Fahrzeugteilen.  
+      Unsere Experten holen Ihren Schrott kostenlos ab und sorgen für die fachgerechte Weiterverarbeitung. So schonen wir gemeinsam Ressourcen und Umwelt.
+      <br><br>
+      Der Ablauf ist einfach:  
+      <strong>1.</strong> Termin vereinbaren – bequem online oder telefonisch.<br>
+      <strong>2.</strong> Schrott bereitstellen – wir informieren Sie über die Abholzeiten.<br>
+      <strong>3.</strong> Abholung & Recycling – unser Team übernimmt die Abholung schnell, zuverlässig und kostenlos.
+      <br><br>
+      Egal ob Metallschrott von Baustellen, Elektroschrott aus Haushalten oder alte Fahrzeugteile – wir sind Ihr Ansprechpartner für eine nachhaltige und unkomplizierte Schrottentsorgung.
     </p>
 
-    <div style="display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center;">
-      <div style="text-align: center;">
-        <div style="font-size: 2rem;">🔧</div>
-        <p style="color: #ddd; margin-top: 0.5rem;">Altmetall</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2rem;">♻️</div>
-        <p style="color: #ddd; margin-top: 0.5rem;">Elektroschrott</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2rem;">🚗</div>
-        <p style="color: #ddd; margin-top: 0.5rem;">Fahrzeugteile</p>
-      </div>
+    <div class="image-gallery">
+      <img src="https://www.euwid-recycling.de/fileadmin/_processed_/5/0/csm_stahlschrott-schrottplatz_01_20-12-2021_f466ebb742.jpeg" alt="Schrott Bild 1" />
+      <img src="https://emrglobalstorage.blob.core.windows.net/sitemedia/uploads/metal-grid-2.jpg" alt="Schrott Bild 2" />
+      <img src="https://www.recyclingmagazin.de/wp-content/uploads/2022/08/SENNEBOGEN_875_E_Hybrid_material_handler_port_Schrott_Wetzel__1_-scaled.jpeg" alt="Schrott Bild 3" />
     </div>
 
-    <button class="cta-button" id="ctaButton">Jetzt Termin vereinbaren</button>
-  </div>
-</div>
-
-
-  <section class="leistungen">
-    <h2>Unsere Leistungen</h2>
-    <div class="leistung-boxes">
-      <div class="leistung-box">
-        <h3>Altmetall</h3>
-        <p>Wir holen sämtliches Altmetall kostenlos und umweltgerecht ab. Kupfer, Aluminium, Eisen – wir nehmen es alles!</p>
-      </div>
-      <div class="leistung-box">
-        <h3>Elektroschrott</h3>
-        <p>Alte Elektrogeräte wie Waschmaschinen, Kühlschränke oder Computer entsorgen wir fachgerecht und sicher.</p>
-      </div>
-      <div class="leistung-box">
-        <h3>Fahrzeugteile</h3>
-        <p>Von Motorblöcken bis zu Karosserieteilen – wir kümmern uns um die Abholung und Verwertung Ihrer Fahrzeugschrottteile.</p>
-      </div>
-    </div>
+    <a href="termin.html" class="more-info-button">Termin vereinbaren</a>
   </section>
 
-  <section class="kontakt">
-    <h2>Kontaktieren Sie uns!</h2>
-    <p>Wir sind für Sie da – schnell, zuverlässig und unkompliziert.</p>
-    <a href="tel:+4915732992222">📞 Mobil: +49 1573 2992222</a>
-    <a href="https://wa.me/491783606066" target="_blank">📱 WhatsApp: +49 178 3606066</a>
-    <a href="mailto:SOSHerne@gmail.com">📧 E-Mail: SOSHerne@gmail.com</a>
-    <p>📍 Adresse: Mozartstr. 13, 44649 Herne</p>
-    <p>👤 Inhaber: Nabil Al Lahib</p>
-  </section>
-
-  <div class="form-section" id="formSection">
-    <h2>Termin vereinbaren</h2>
-    <form>
-      <label for="schrottart">Welche Art von Schrott?</label>
-      <select id="schrottart" name="schrottart" required>
-        <option value="">Bitte wählen...</option>
-        <option value="Metall">Metall</option>
-        <option value="Elektronik">Elektronik</option>
-        <option value="Fahrzeugteile">Fahrzeugteile</option>
-        <option value="Sonstiges">Sonstiges</option>
-      </select>
-
-      <label for="adresse">Abholadresse</label>
-      <input type="text" id="adresse" name="adresse" placeholder="Straße, Hausnummer, PLZ, Stadt" required />
-
-      <label for="notizen">Anmerkungen / Beschreibung</label>
-      <textarea id="notizen" name="notizen" placeholder="Was soll entsorgt werden? Gibt es Besonderheiten?"></textarea>
-
-      <button type="submit" class="submit-btn">Absenden</button>
-    </form>
-  </div>
-
-  <script>
-    const ctaButton = document.getElementById('ctaButton');
-    const formSection = document.getElementById('formSection');
-
-    ctaButton.addEventListener('click', () => {
-      formSection.style.display = 'block';
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>
-<!DOCTYPE html>
