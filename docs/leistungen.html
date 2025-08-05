@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOS Metall & Schrott - Leistungen</title>
+  <style>
+    /* Gleicher Style wie index.html für Header + Grundlayout */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 70px; /* Header Fix */
+    }
+    .header {
+      width: 100%;
+      background-color: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(255, 165, 0, 0.2);
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 100;
+      animation: slideDown 1s ease-out forwards;
+    }
+    .title-block {
+      color: orange;
+      font-weight: bold;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-buttons a {
+      color: orange;
+      border: 1px solid orange;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .nav-buttons a:hover,
+    .nav-buttons a.active {
+      background-color: orange;
+      color: black;
+    }
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+    h1, h2 {
+      color: yellow;
+      margin-bottom: 1rem;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+    .leistung-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .leistung-boxes {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .leistung-box {
+        width: 30%;
+      }
+    }
+    .leistung-box {
+      background-color: #111;
+      border-left: 4px solid orange;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255,165,0,0.15);
+    }
+    .leistung-box h3 {
+      color: orange;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="title-block">
+      <span class="title-icon">🛠️</span>
+      SOS Metall & Schrott
+    </div>
+    <nav class="nav-buttons">
+      <a href="index.html">Startseite</a>
+      <a href="leistungen.html" class="active">Leistungen</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="termin.html">Termin</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Unsere Leistungen im Überblick</h1>
+    <p>Wir bieten Ihnen eine umfassende und professionelle Abholung und Entsorgung von verschiedensten Schrottarten an. Nachhaltigkeit und Umweltbewusstsein stehen dabei stets im Mittelpunkt unseres Handelns.</p>
+
+    <section class="leistung-boxes">
+      <article class="leistung-box">
+        <h3>Altmetall</h3>
+        <p>Altmetall bezeichnet gebrauchte metallische Materialien wie Kupfer, Aluminium, Eisen und Stahl, die nicht mehr benötigt werden. Wir holen Ihr Altmetall kostenlos und umweltgerecht ab, sorgen für fachgerechte Verwertung und tragen damit zur Ressourcenschonung bei.</p>
+      </article>
+
+      <article class="leistung-box">
+        <h3>Elektroschrott</h3>
+        <p>Elektroschrott umfasst ausgediente elektrische Geräte wie Waschmaschinen, Kühlschränke, Computer oder Handys. Diese enthalten oft wertvolle Rohstoffe, die recycelt werden können. Wir entsorgen Ihren Elektroschrott fachgerecht und gemäß den gesetzlichen Vorgaben, um Umweltschäden zu vermeiden.</p>
+      </article>
+
+      <article class="leistung-box">
+        <h3>Fahrzeugteile</h3>
+        <p>Ob Motorblöcke, Karosserieteile oder andere Fahrzeugkomponenten – wir kümmern uns um die Abholung und Verwertung von Schrottteilen aus Fahrzeugen. Dabei achten wir auf eine umweltfreundliche Entsorgung und Wiederverwertung.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
